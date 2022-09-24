@@ -12,3 +12,7 @@ function showDialog() {
   SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
     .showModalDialog(html, "My custom dialog");
 }
+
+function processForm(formObject) {
+  console.log(`Hello, ${formObject.name}!`);
+}

@@ -2,8 +2,27 @@
 <html>
   <head>
     <base target="_top" />
+    <script>
+      // Prevent forms from submitting.
+      function preventFormSubmit() {
+        const forms = document.querySelectorAll("form");
+        forms.forEach((form) => {
+          form.addEventListener("submit", function (event) {
+            event.preventDefault();
+          });
+        });
+      }
+      window.addEventListener("load", preventFormSubmit);
+
+      function handleFormSubmit(formObject) {
+        google.script.run.processForm(formObject);
+      }
+    </script>
   </head>
   <body>
-    <h1>Hello, World!</h1>
+    <form id="myForm" onsubmit="handleFormSubmit(this)">
+      <input name="name" type="text" />
+      <input type="submit" value="Submit" />
+    </form>
   </body>
 </html>
