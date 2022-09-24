@@ -14,8 +14,13 @@
       }
       window.addEventListener("load", preventFormSubmit);
 
+      function onSuccess() {
+        const div = document.getElementById("success-output");
+        div.innerHTML = "Successfully saved";
+      }
+
       function handleFormSubmit(formObject) {
-        google.script.run.processForm(formObject);
+        google.script.run.withSuccessHandler(onSuccess).processForm(formObject);
       }
     </script>
   </head>
@@ -24,5 +29,6 @@
       <input name="name" type="text" />
       <input type="submit" value="Submit" />
     </form>
+    <div id="success-output"></div>
   </body>
 </html>
