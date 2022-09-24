@@ -14,5 +14,8 @@ function showDialog() {
 }
 
 function processForm(formObject) {
-  console.log(`Hello, ${formObject.name}!`);
+  const userProperties = PropertiesService.getUserProperties();
+  userProperties.setProperties({
+    name: formObject.name,
+  });
 }
